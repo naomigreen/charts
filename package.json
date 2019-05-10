@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "homepage": "https://naomigreen.github.io/charts/",
   "scripts": {
-    "start": "node server.js",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
     "client": "cd client && yarn start",
-    "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+     "server": "nodemon server.js",
+     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+     "dev:server": "cd client && yarn build && cd .. && yarn start",
+     "start": "node server.js",
+     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
