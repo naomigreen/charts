@@ -3,18 +3,20 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
 const port = process.env.PORT || 5000;
+// If I'm very bored I might host all data in a database -_-
+const data = require('./data.json');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 // API calls
-app.get('/api/hello', (req, res) => {
-  res.send({ express: 'Hello From Express' });
+
+app.get('/api/data', (req, res) => {
+  res.send(data);
 });
-app.post('/api/world', (req, res) => {
-  console.log(req.body);
-  res.send(
-    `I received your POST request. This is what you sent me: ${req.body.post}`,
-  );
-});
+
+
+console.log(data);
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
   app.use(express.static(path.join(__dirname, 'client/build')));
